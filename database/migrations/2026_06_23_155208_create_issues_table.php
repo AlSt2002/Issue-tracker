@@ -13,35 +13,35 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('issues', function (Blueprint $table): void {
-                $table->id();
+        Schema::create('issues', function (Blueprint $table): void {
+            $table->id();
 
-                $table->foreignId('project_id')
-                    ->constrained()
-                    ->cascadeOnDelete();
+            $table->foreignId('project_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
-                $table->string('title');
+            $table->string('title');
 
-                $table->text('description');
+            $table->text('description');
 
-                $table->enum(
-                    'status',
-                    array_column(IssueStatus::cases(), 'value')
-                )->default(IssueStatus::Open->value);
+            $table->enum(
+                'status',
+                array_column(IssueStatus::cases(), 'value')
+            )->default(IssueStatus::Open->value);
 
-                $table->enum(
-                    'priority',
-                    array_column(IssuePriority::cases(), 'value')
-                )->default(IssuePriority::Medium->value);
+            $table->enum(
+                'priority',
+                array_column(IssuePriority::cases(), 'value')
+            )->default(IssuePriority::Medium->value);
 
-                $table->dateTime('due_date')->nullable();
+            $table->dateTime('due_date')->nullable();
 
-                $table->timestamps();
+            $table->timestamps();
 
-                $table->index('status');
-                $table->index('priority');
-                $table->index('due_date');
-            });
+            $table->index('status');
+            $table->index('priority');
+            $table->index('due_date');
+        });
     }
 
     /**
