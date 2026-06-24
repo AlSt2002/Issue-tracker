@@ -26,4 +26,12 @@ class Tag extends Model
     {
         return $this->belongsToMany(Issue::class);
     }
+
+    /**
+     * @return BelongsToMany<Issue, $this>
+     */
+    public function assignedIssues(): BelongsToMany
+    {
+        return $this->belongsToMany(Issue::class);
+    }
 }
