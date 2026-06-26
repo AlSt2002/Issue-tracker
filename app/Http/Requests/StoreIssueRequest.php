@@ -28,7 +28,9 @@ class StoreIssueRequest extends FormRequest
             'description' => ['required', 'string'],
             'status' => ['required', 'in:open,closed,in_progress'],
             'priority' => ['required', 'in:low,medium,high'],
-            'due_date' => ['nullable', 'date_format:Y-m-d H:i'],
+            'due_date' => ['nullable', 'date'],
+            'tags' => ['sometimes', 'array'],
+            'tags.*' => ['integer', 'exists:tags,id'],
         ];
     }
 }

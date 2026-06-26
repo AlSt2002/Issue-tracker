@@ -28,7 +28,9 @@ class UpdateIssueRequest extends FormRequest
             'description' => ['sometimes', 'string'],
             'status' => ['sometimes', 'in:open,closed,in_progress'],
             'priority' => ['sometimes', 'in:low,medium,high'],
-            'due_date' => ['sometimes', 'date_format:Y-m-d H:i'],
+            'due_date' => ['sometimes', 'date'],
+            'tags' => ['sometimes', 'array'],
+            'tags.*' => ['integer', 'exists:tags,id'],
         ];
     }
 }

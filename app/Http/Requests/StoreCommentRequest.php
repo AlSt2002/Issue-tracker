@@ -12,7 +12,8 @@ class StoreCommentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // Only allow authenticated users to post comments
+        return auth()->check();
     }
 
     /**
@@ -23,8 +24,7 @@ class StoreCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'issue_id' => ['required', 'exists:issues,id'],
-            'author_name' => ['required', 'string'],
+            // The AJAX comment form only posts `body`; the controller fills author_name
             'body' => ['required', 'string'],
         ];
     }

@@ -27,6 +27,8 @@ class Issue extends Model
         'status',
         'priority',
         'due_date',
+        'body',
+        'author_name',
     ];
 
     protected function casts(): array
