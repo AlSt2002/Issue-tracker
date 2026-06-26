@@ -25,8 +25,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string'],
-            'start_date' => ['sometimes', 'date_format:Y-m-d H:i'],
-            'deadline' => ['sometimes', 'date_format:Y-m-d H:i', 'after_or_equal:start_date'],
+            'start_date' => ['sometimes', 'date'],
+            'deadline' => ['sometimes', 'date', 'after_or_equal:start_date'],
         ];
     }
 }
